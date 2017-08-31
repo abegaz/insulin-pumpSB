@@ -22,6 +22,8 @@ Functional:
              ii.	Rate of Decrease of Sugar Levels are increasing
 7.	The system should be able to inject insulin based off calculation
 8.	Alert/Sound user if there are any anomalies, and display a diagnostic/warning message
+          i. Create a ping system to locate the person using the (in case of emergency).
+           system when something goes wrong. Should have some sort of location services in case of any emergency.
           a.	System Errors
           b.	Insulin resevoir running low
           c.	Blood sugar falling into the UNSAFE ZONE
