@@ -29,6 +29,7 @@ Functional:
           d.        Create a ping system to locate the person using the (in case of emergency) 
                     system when something goes wrong. Should have some sort of location services in case of any emergency.
 9.        System must show blood sugar levels on graph, and insulin dosage log
+          a.        Record dates and times insulin was administered?
 10.
 
 Non-Functional:
