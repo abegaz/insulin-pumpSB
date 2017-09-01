@@ -8,6 +8,7 @@ Functional:
 3.	Calculate how much insulin is required to maintain safe blood sugar level
           a.	Based on the rate of change of blood sugar levels
           b.	How many units of insulin required?
+          c.        Is there a daily limit on the amount of insulin that can be taken?
 4.	If the reading falls in the UNSAFE ZONE (low blood sugar levels - we still need to define what this range should be) 
           a.	No insulin will be required. 
           b.	Alert the user they need sugar
