@@ -30,7 +30,13 @@ Functional:
                     system when something goes wrong. Should have some sort of location services in case of any emergency.
 9.        System must show blood sugar levels on graph, and insulin dosage log
           a.        Record dates and times insulin was administered?
-10.
+10.       Graphical User Interface should be implemented (possibly can add most of the functional requirments below 10 into the GUI)
+          a.        User-friendly
+              i.    Has an automatic option 
+              ii.   Has a manual mode (user can manually set the amount of insulin, alerts the user whenever they try to inject too much insulin)
+          b.        Power option (on or off buttons)
+          c.        Diplays the current sugar level
+          d.        Displays the pervious amount of insulin injected
 
 Non-Functional:
 1.Programming must be done in Java.
