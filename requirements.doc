@@ -1,19 +1,53 @@
-  Work on the functional and non-functional requirements of your project. You are expected to elicit at least 
+Work on the functional and non-functional requirements of your project. You are expected to elicit at least 
 ten functional requirements and two non-functional requirements. Update the requirements.doc file in your 
-github project repository. 
+github project repository 
 
 Functional:
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
+1.	Collects blood sugar levels from blood sugar sensor
+2.	Sends data from blood sugar sensor to micro-pump
+3.	Calculate how much insulin is required to maintain safe blood sugar level
+          a.	Based on the rate of change of blood sugar levels
+          b.	How many units of insulin required?
+          c.        Is there a daily limit on the amount of insulin that can be taken?
+4.	If the reading falls in the UNSAFE ZONE (low blood sugar levels - we still need to define what this range should be) 
+          a.	No insulin will be required. 
+          b.	Alert the user they need sugar
+5.	If the reading falls in the SAFE ZONE (target blood sugar levels - we still need to define what this range should be)
+          a.	Insulin will be delivered under the following conditions:
+              i.	Sugar Levels are increasing
+             ii.	Rate of Increase of Sugar Levels are increasing
+6.	If the reading falls in the UNDESIREABLE ZONE (high blood sugar levels - we still need to define what this range should be)
+          a.	Insulin will be delivered
+          b.	Only exception: 
+              i.	Sugar Levels are decreasing
+             ii.	Rate of Decrease of Sugar Levels are increasing
+7.	The system should be able to inject insulin based off calculation
+8.	Alert/Sound user if there are any anomalies, and display a diagnostic/warning message
+          a.	System Errors
+          b.	Insulin resevoir running low
+          c.	Blood sugar falling into the UNSAFE ZONE
+          d.        Create a ping system to locate the person using the (in case of emergency) 
+                    system when something goes wrong. Should have some sort of location services in case of any emergency.
+9.        System must show blood sugar levels on graph, and insulin dosage log
+          a.        Record dates and times insulin was administered?
+10.       Graphical User Interface should be implemented (possibly can add most of the functional requirments below 10 into the GUI)
+          a.        User-friendly
+              i.    Has an automatic option 
+              ii.   Has a manual mode (user can manually set the amount of insulin, alerts the user whenever they try to inject too much insulin)
+          b.        Power option (on or off buttons)
+          c.        Diplays the current sugar level
+          d.        Displays the pervious amount of insulin injected
 
 Non-Functional:
 1.Programming must be done in Java.
-2.
+2.Maintain blood sugar to stay in the SAFE ZONE; otherwise unhealthy blood sugar levels can lead to long-term consequences: 
+          a.	High-blood Sugar
+              i.	Eye Damage
+             ii.	Kidney Damage
+          b.	Low-blood Sugar
+              i.	Coma
+             ii.	Brain-malfunction
+            iii.	Death
+            
+3. If we implement 9a we will need to most likely use a MySQL database to store user information as well as dates 
+    and times insulin was administered.
