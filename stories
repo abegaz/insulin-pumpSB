@@ -1,0 +1,7 @@
+1.	As a user, I want the pump to collect the necessary information about my blood glucose level in regular intervals and release insulin 		into my blood in order to keep blood sugar levels stable. (Epic level story)
+2.	As a user, I want to be able to review data collected by the pump, so that I can make smarter lifestyle choices.
+3.	As a user, I want to be alerted whenever the pump collects information that implicates problematic blood sugar levels so that I can 			take the necessary steps to respond to the issue.
+4.	As a user, I want to know when the pump is running low on battery/ insulin, so I can replace the resource before running out of it.
+5.	As a user, I want the pump to alert me when it detects a malfunction on either the software or hardware level, so that I can take the 		necessary steps to still supply my body with the necessary insulin through other sources until the error is fixed.
+6.	As a user, I want the pump to have an emergency mechanism to alert a healthcare provider/ selected caretaker in case of an emergency
+7.	As a user, I want to be able to interact with the pump through a simple, intuitive interface so that I can start using the pump 					immediately without any learning curve.
