@@ -1,0 +1,37 @@
+1.  As a user, I want the pump to collect the necessary information about my blood glucose level in regular intervals and release insulin into my blood in order to keep blood sugar levels stable. (Epic level story)
+2.  As a user, I want to be able to review data collected by the pump, so that I can make smarter lifestyle choices.
+3.  As a user, I want to be alerted whenever the pump collects information that implicates problematic blood sugar levels so that I can take the necessary steps to respond to the issue.
+4.  As a user, I want to know when the pump is running low on battery/ insulin, so I can replace the resource before running out of it.
+5.  As a user, I want the pump to alert me when it detects a malfunction on either the software or hardware level, so that I can take the necessary steps to still supply my body with the necessary insulin through other sources until the error is fixed.
+6.  As a user, I want the pump to have an emergency mechanism to alert a healthcare provider/ selected caretaker in case of an emergency
+7.  As a user, I want to be able to interact with the pump through a simple, intuitive interface so that I can start using the pump immediately without any learning curve.
+8.  As a user, I want to be able to access my records when needing to consult with my doctor.
+9.  As a user, I want the pump to be secure so that only those who are authorized can access/modify it.
+10. As a diabetes user, I want to have a chart that plots my blood sugar levels every 5 minutes
+      AC: 
+        • X-axis: represents blood sugar levels [mg/dL]
+        • Y-axis: represents time [right now the range of the graph should represent 12 hrs. Part two we’ll create a time range for the user to select]
+        • Team up with back end in order to receive endpoints to update this graph
+11. As a diabetes user, I want the graph to show 3 zones on the chart [undesirable zone, unsafe zone, and safe zone].
+      AC:
+        • Use mockup accordingly for style.
+        • Unsafe Zone [by default(automatic mode): blood sugar levels < 70 mg/dL]
+        • Safe Zone [by default(automatic mode): blood sugar levels 70-130 mg/dL]
+        • Undesirable Zone [by default(automatic mode): blood sugar levels > 130 mg/dL]
+12. As a diabetes user, I want the graph to show when insulin was injected
+      AC: 
+        • Use mockup accordingly for style.
+        • Display how much insulin was injected [units]
+        • Show time insulin was injected
+13. As a diabetes user, I want to be able to change the time range on the graph
+      AC: 
+        • 12 hrs
+        • 24hrs/1day
+        • 3 days
+        • 1 week
+        • 1 month
+        • (Anything more will be located in the log that can be exported when consulting with a doctor)
+14. As a diabetes user, I want to be able to power my system on and off
+      AC: 
+        • Use the mock up accordingly for style
+        • Hitting the power button should turn off display of graph and show a representation that the system is off
