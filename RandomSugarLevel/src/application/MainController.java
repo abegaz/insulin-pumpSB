@@ -9,11 +9,11 @@ import javafx.scene.control.Label;
 public class MainController {
 	
 	@FXML
-	private Label myMessage;
+	private Label bloodSugar;
 	public void generateRandom(ActionEvent event) {
 		Random rand = new Random();
 		int myrand = rand.nextInt(151)+ 50;
-		myMessage.setText(Integer.toString(myrand));
+		bloodSugar.setText(Integer.toString(myrand));
 		
 	}
 }
