@@ -9,7 +9,7 @@
 <AnchorPane prefHeight="500.0" prefWidth="500" style="-fx-background-color: darkgray;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
    <children>
       <Button fx:id="clickMe" layoutX="198.0" layoutY="442.0" mnemonicParsing="false" onAction="#generateRandom" prefHeight="44.0" prefWidth="104.0" text="Generate" />
-      <Label fx:id="bloodSugar" alignment="CENTER" contentDisplay="CENTER" layoutX="125.0" layoutY="125.0" prefHeight="250.0" prefWidth="250.0" textAlignment="CENTER" textFill="RED">
+      <Label fx:id="myNum" alignment="CENTER" contentDisplay="CENTER" layoutX="125.0" layoutY="125.0" prefHeight="250.0" prefWidth="250.0" textAlignment="CENTER" textFill="RED">
          <font>
             <Font name="System Bold" size="75.0" />
          </font>
