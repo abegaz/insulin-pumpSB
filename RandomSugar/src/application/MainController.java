@@ -147,7 +147,7 @@ public class MainController {
 	myNum1.setText(Integer.toString(insulinLevel));
 
 
-	//Animation for low blood sugar
+	//Animation for low insulin reservoir
     TranslateTransition openNav2=new TranslateTransition(new Duration(650), navList2);
     openNav2.setToY(0);
     TranslateTransition closeNav2=new TranslateTransition(new Duration(650), navList2);
