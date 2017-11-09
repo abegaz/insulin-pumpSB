@@ -9,14 +9,14 @@
 
 <AnchorPane minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: darkgray;" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
    <children>
-      <Button fx:id="clickMe" layoutX="198.0" layoutY="442.0" mnemonicParsing="false" onAction="#generateRandom" prefHeight="44.0" prefWidth="104.0" text="Start">
+      <Button layoutX="198.0" layoutY="442.0" mnemonicParsing="false" onAction="#generateRandom" prefHeight="44.0" prefWidth="104.0" text="Start">
          <font>
             <Font size="18.0" />
          </font>
          <effect>
             <DropShadow />
          </effect></Button>
-      <Button fx:id="clickMe1" layoutX="44.0" layoutY="353.0" mnemonicParsing="false" onAction="#generateInsulin" prefHeight="44.0" prefWidth="49.0" text="Start">
+      <Button layoutX="44.0" layoutY="353.0" mnemonicParsing="false" onAction="#generateInsulin" prefHeight="44.0" prefWidth="49.0" text="Start">
          <effect>
             <DropShadow />
          </effect>
