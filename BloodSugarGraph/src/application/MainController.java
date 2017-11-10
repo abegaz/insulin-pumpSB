@@ -11,13 +11,17 @@ import java.util.regex.Pattern;
 import java.util.ResourceBundle;
 import java.net.URL;
 
-
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 
 
 
@@ -33,8 +37,11 @@ public class MainController implements Initializable {
 	
 
     @FXML
-    private LineChart<Number, Number> LineChart;
-    XYChart.Series<Number, Number> series;
+    private LineChart<String, Number> LineChart;
+    //XYChart.Series<?, ?> series;
+    
+    @FXML   
+    Label lbl;		//Mouse
 
     @FXML
     private CategoryAxis x;
@@ -42,6 +49,8 @@ public class MainController implements Initializable {
     @FXML
     private NumberAxis y;
     
+    
+    /*
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     	series = new XYChart.Series<>();    	
@@ -51,6 +60,7 @@ public class MainController implements Initializable {
     	Thread th = new Thread(new SugarLevelReader());
     	th.start();
     }
+    
     
     class SugarLevelReader implements Runnable { //using https://www.youtube.com/watch?v=tqBlpH_3AgM&t=99s
     	@Override
@@ -91,19 +101,39 @@ public class MainController implements Initializable {
     				}
     		}
     	}
+    */
     
     
-    
-  /*  @Override
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
-    	XYChart.Series series = new XYChart.Series<>();
-    	series.getData().add(new XYChart.Data("5", 55));
-    	series.getData().add(new XYChart.Data("5", 55));
+    	XYChart.Series<String, Number> series = new XYChart.Series<String, Number>();
+    	series.getData().add(new XYChart.Data<String, Number>("5", 55));
+    	series.getData().add(new XYChart.Data<String, Number>("8", 85));
     	
-    	XYChart.Series series2 = new XYChart.Series<>();
-    	series2.getData().add(new XYChart.Data("10", 88));
-    	series2.getData().add(new XYChart.Data("10", 150));
+    	LineChart.getData().addAll(series);
     	
-    	LineChart.getData().addAll(series,series2);
-    }*/
+    	
+    	EventHandler<MouseEvent> mouseSensor = 
+    	        (MouseEvent event) -> {
+    	            ((Node)(event.getSource())).setCursor(Cursor.HAND);
+    	};
+    	series.getNode().setOnMouseEntered(mouseSensor);
+        series.getNode().setOnMouseExited(mouseSensor);
+        //series.getData().setOnMouseEntered(mouseSensor);
+        //series.getData().setOnMouseExited(mouseSensor);
+    	
+    	for(final XYChart.Data<String, Number> data : series.getData()) {  //mouse event
+    		data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+
+				@Override
+				public void handle(MouseEvent arg0) {
+					lbl.setText("Blood Sugar Level was checked at: " + data.getXValue() + "\nBlood Sugar Level: " + String.valueOf(data.getYValue()));
+					
+				}
+    			
+    		});
+    	}
+    	
+    
+    }
 }

@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+<AnchorPane prefHeight="539.0" prefWidth="608.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
    <children>
       <LineChart fx:id="LineChart" prefHeight="400.0" prefWidth="590.0" title="Blood Sugar Graph">
         <xAxis>
@@ -19,5 +22,16 @@
                </tickLabelFont></NumberAxis>
         </yAxis>
       </LineChart>
+      <Label fx:id="lbl" alignment="TOP_LEFT" graphicTextGap="19.0" layoutX="61.0" layoutY="423.0" lineSpacing="19.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="91.0" prefWidth="360.0" wrapText="true">
+         <font>
+            <Font size="17.0" />
+         </font>
+         <effect>
+            <Glow level="0.48" />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="CROSSHAIR" />
+         </cursor>
+      </Label>
    </children>
 </AnchorPane>
