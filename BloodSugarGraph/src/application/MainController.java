@@ -128,7 +128,7 @@ public class MainController implements Initializable {
 				@Override
 				public void handle(MouseEvent arg0) {
 					lbl.setText("Blood Sugar Level was checked at: " + data.getXValue() + "\nBlood Sugar Level: " + String.valueOf(data.getYValue()));
-					
+					Tooltip.install(data.getNode(), new Tooltip("Blood Sugar Level was checked at: " + data.getXValue() + "\nBlood Sugar Level: " + String.valueOf(data.getYValue())));
 				}
     			
     		});
