@@ -3,7 +3,6 @@
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -11,7 +10,7 @@
    <children>
       <LineChart fx:id="LineChart" prefHeight="400.0" prefWidth="590.0" title="Blood Sugar Graph">
         <xAxis>
-          <CategoryAxis prefHeight="24.0" prefWidth="444.0" side="BOTTOM" fx:id="x" />
+          <CategoryAxis label="Time" prefHeight="24.0" prefWidth="444.0" side="BOTTOM" fx:id="x" />
         </xAxis>
         <yAxis>
           <NumberAxis fx:id="y" autoRanging="false" label="Blood Sugar Level" lowerBound="40.0" minorTickCount="10" side="LEFT" tickLabelGap="5.0" upperBound="160.0">
@@ -20,6 +19,5 @@
                </tickLabelFont></NumberAxis>
         </yAxis>
       </LineChart>
-      <Button layoutX="231.0" layoutY="408.0" mnemonicParsing="false" onAction="#btn" text="Test" />
    </children>
 </AnchorPane>
