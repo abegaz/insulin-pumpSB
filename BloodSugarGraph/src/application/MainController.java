@@ -97,11 +97,11 @@ public class MainController implements Initializable {
   /*  @Override
     public void initialize(URL url, ResourceBundle rb) {
     	XYChart.Series series = new XYChart.Series<>();
-    	series.getData().add(new XYChart.Data(5, 55));
+    	series.getData().add(new XYChart.Data("5", 55));
     	series.getData().add(new XYChart.Data("5", 55));
     	
     	XYChart.Series series2 = new XYChart.Series<>();
-    	series2.getData().add(new XYChart.Data(10, 88));
+    	series2.getData().add(new XYChart.Data("10", 88));
     	series2.getData().add(new XYChart.Data("10", 150));
     	
     	LineChart.getData().addAll(series,series2);
