@@ -60,8 +60,9 @@ public class MainController {
     private BloodSugar bs1;
 
 
-@FXML private Label myNum;
+    @FXML private Label myNum;
 
+    private int index = 0;
 
 XYChart.Series<String, Number> series = new XYChart.Series<String, Number>();
 
@@ -108,9 +109,13 @@ public void generateRandom(ActionEvent event) {
 							series.getData().add(new LineChart.Data<String,Number>(ft.format(dNow), bs1.getBs()));
 							
 							
-							
-							
 
+							
+							
+							
+							
+							
+							//-------code for hover and bs display-------//
 							EventHandler<MouseEvent> mouseSensor = 
 							        (MouseEvent e) -> {
 							            ((Node)(e.getSource())).setCursor(Cursor.HAND);
@@ -131,7 +136,28 @@ public void generateRandom(ActionEvent event) {
 									
 								});
 							}     
-	    	
+							//-------end code for hover and bs display-------//
+							
+							//-------code for red points-------//
+						    
+						    if(bs1.getBs() >= 130){
+								series.getData().add(new LineChart.Data<String,Number>(ft.format(dNow), bs1.getBs()));
+								XYChart.Data<String, Number> dataPoint = series.getData().get(index);
+								Node lineSymbol = dataPoint.getNode().lookup(".chart-line-symbol");
+								lineSymbol.setStyle("-fx-background-color: #ff0000, #ffffff; -fx-background-insets: 0, 2;\n" + 
+							               "    -fx-background-radius: 3px;\n" +
+							               "    -fx-padding: 4px;");
+								
+								Tooltip.install(dataPoint.getNode(), new Tooltip("Insulin injected at " + ft.format(dNow)));
+								dataPoint.getNode().setOnMouseEntered(event -> dataPoint.getNode().getStyleClass().add("onHover"));
+								dataPoint.getNode().setOnMouseExited(event -> dataPoint.getNode().getStyleClass().remove("onHover"));
+						    }
+							else if(bs1.getBs() < 130){
+								series.getData().add(new LineChart.Data<String,Number>(ft.format(dNow), bs1.getBs()));
+							}
+						    index++;
+						    //-------end code for red points-------//
+							
 						    					
 							consumeSugar.setOnAction(new EventHandler<ActionEvent>() {
 							    @Override public void handle(ActionEvent e) {
