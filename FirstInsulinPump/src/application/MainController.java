@@ -36,7 +36,7 @@ public class MainController {
     private Button exitButton;
     @FXML
     private Button consumeSugar;
-    @FXML
+	@FXML
     private Label myNum1;
     @FXML
     private AnchorPane navList2;
@@ -60,39 +60,19 @@ public class MainController {
     private BloodSugar bs1;
 
 
-    @FXML private Label myNum;
+@FXML private Label myNum;
 
 
 XYChart.Series<String, Number> series = new XYChart.Series<String, Number>();
 
 
+
+
+
 @SuppressWarnings("unchecked")
 public void generateRandom(ActionEvent event) {
 
-
 	LineChart.getData().addAll(series);
-	
-	EventHandler<MouseEvent> mouseSensor = 
-	        (MouseEvent e) -> {
-	            ((Node)(e.getSource())).setCursor(Cursor.HAND);
-	};
-	series.getNode().setOnMouseEntered(mouseSensor);
-    series.getNode().setOnMouseExited(mouseSensor);
-    //series.getData().setOnMouseEntered(mouseSensor);
-    //series.getData().setOnMouseExited(mouseSensor);
-	
-	for(final XYChart.Data<String, Number> data : series.getData()) {  //mouse event
-		data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-
-			@Override
-			public void handle(MouseEvent arg0) {
-				lbl.setText("Blood Sugar Level was checked at: " + data.getXValue() + "\nBlood Sugar Level: " + String.valueOf(data.getYValue()));
-				Tooltip.install(data.getNode(), new Tooltip("Blood Sugar Level was checked at: " + data.getXValue() + "\nBlood Sugar Level: " + String.valueOf(data.getYValue())));
-			}
-			
-		});
-	}
-	
 		Timer timer = new Timer();
 		timer.scheduleAtFixedRate(new TimerTask(){
 			public void run(){
@@ -126,7 +106,31 @@ public void generateRandom(ActionEvent event) {
 						    SimpleDateFormat ft = 
 						    new SimpleDateFormat ("hh:mm:ss a");
 							series.getData().add(new LineChart.Data<String,Number>(ft.format(dNow), bs1.getBs()));
-							     
+							
+							
+							
+							
+
+							EventHandler<MouseEvent> mouseSensor = 
+							        (MouseEvent e) -> {
+							            ((Node)(e.getSource())).setCursor(Cursor.HAND);
+							};
+							series.getNode().setOnMouseEntered(mouseSensor);
+							series.getNode().setOnMouseExited(mouseSensor);
+							//series.getData().setOnMouseEntered(mouseSensor);
+							//series.getData().setOnMouseExited(mouseSensor);
+
+							for(final XYChart.Data<String, Number> data : series.getData()) {  //mouse event
+								data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+
+									@Override
+									public void handle(MouseEvent arg0) {
+										lbl.setText("Blood Sugar Level was checked at: " + data.getXValue() + "\nBlood Sugar Level: " + String.valueOf(data.getYValue()));
+										Tooltip.install(data.getNode(), new Tooltip("Blood Sugar Level was checked at: " + data.getXValue() + "\nBlood Sugar Level: " + String.valueOf(data.getYValue())));
+									}
+									
+								});
+							}     
 	    	
 						    					
 							consumeSugar.setOnAction(new EventHandler<ActionEvent>() {
@@ -149,8 +153,7 @@ public void generateRandom(ActionEvent event) {
 				   //second parameter is how long before the next measurement is taken (milliseconds)
 				   //second parameter set to 5 seconds (5000 milliseconds) for testing purposes
 				   //to set the timer for 15 minutes use either 15*60*1000 OR 900000 for the second parameter
-		
-	}
+}
 
 public void generateInsulin(ActionEvent event) {
 	int insulinLevel = (int)(Math.random()*151) + 50;
