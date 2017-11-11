@@ -28,7 +28,7 @@
             <DropShadow />
          </effect>
       </Label>
-      <Label fx:id="myNum1" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="26.0" layoutY="646.0" prefHeight="79.0" prefWidth="85.0" textAlignment="CENTER" textFill="#0a0a0a">
+      <Label fx:id="myNum1" alignment="CENTER" contentDisplay="CENTER" layoutX="26.0" layoutY="646.0" prefHeight="79.0" prefWidth="85.0" textAlignment="CENTER" textFill="#0a0a0a">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>
