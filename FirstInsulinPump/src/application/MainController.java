@@ -1,181 +1,165 @@
 package application;
 
-
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Timestamp;
-import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.ResourceBundle;
+import java.net.URL;
+
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
+import javafx.scene.Node;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
-import javafx.animation.TranslateTransition;
-import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
-import javafx.util.Duration;
+import javafx.scene.control.Tooltip;
+import javafx.scene.input.MouseEvent;
 
-public class MainController {
-	
-	
-	    @FXML
-	    private Button awesome;
-	    @FXML
-	    private AnchorPane navList;
-	    @FXML
-	    private Button exitButton;
-	    @FXML
-	    private Button consumeSugar;
-	    @FXML
-	    private AnchorPane navList2;
-	    @FXML
-	    private Button exitButton2;
-	    @FXML
-	    private Button insulinReservoir;
-	    @FXML
-	    private Label myNum1;
-	    
-	
 
+
+
+public class MainController implements Initializable {
+	
 	String url = "jdbc:mysql://localhost:3306/demo";
 	String user = "root";
 	String password = "";
 	Connection myConn = null;
 	Statement myStmt = null;
-	Timestamp ts = new Timestamp(System.currentTimeMillis()); 
-	@FXML private Label myNum;
-	public void generateRandom(ActionEvent event) {
-		Timer timer = new Timer();
-		timer.scheduleAtFixedRate(new TimerTask(){
-			public void run(){
-				Platform.runLater(new Runnable(){ //What allows the UI to be modified
-					public void run(){
-						Random rand = new Random();
-						int bloodSugar = rand.nextInt(151)+ 50;
-						myNum.setText(Integer.toString(bloodSugar));
-						
-						
-						//Animation for low blood sugar
-				        TranslateTransition openNav=new TranslateTransition(new Duration(350), navList);
-				        openNav.setToY(0);
-				        TranslateTransition closeNav=new TranslateTransition(new Duration(350), navList);
-				
-						if(bloodSugar  <= 100) {
-							navList.getTranslateY();
-				            openNav.play();
-				            } else {
-				                closeNav.setToY(-(navList.getHeight()));
-				                closeNav.play();
-				            }
-						// End of animation
-						
-						
-					    // Exit button to close alert box
-						exitButton.setOnAction(new EventHandler<ActionEvent>() {
-						    @Override public void handle(ActionEvent e) {
-						    	closeNav.setToY(-(navList.getHeight()));
-				                closeNav.play();
-						    }
-						});
-						
-						
-						try {	
-							myConn = DriverManager.getConnection(url, user, password);
-							myStmt = myConn.createStatement();
-							String sql = "insert into info " + " (bloodSugar,time)"
-									+ " values ('"+bloodSugar+"', '"+ts+"')";
-							myStmt.executeUpdate(sql);
-							System.out.println("Insert complete.");
-							} catch (Exception exc) {
-								exc.printStackTrace();
-							} finally {
-								if (myStmt != null) {
-									try {
-										myStmt.close();
-									} catch (SQLException e) {
-										// TODO Auto-generated catch block
-										e.printStackTrace();
-									}
-								}
-								if (myConn != null) {
-									try {
-										myConn.close();
-									} catch (SQLException e) {
-										// TODO Auto-generated catch block
-										e.printStackTrace();
-									}
-								}
-						
-					}
-						// Clicking 'Consume Sugar' will add 50
-						consumeSugar.setOnAction(new EventHandler<ActionEvent>() {
-						    @Override public void handle(ActionEvent e) {
-						    	
-						    	myNum.setText(Integer.toString(bloodSugar + 50));
-						    	closeNav.setToY(-(navList.getHeight()));
-				                closeNav.play();
-						    }
-						});	
-						
-					}
-				});
-
-			
-			}},0,20000); //,first parameter is the delay before the FIRST measurement is taken (milliseconds)
-				   //second parameter is how long before the next measurement is taken (milliseconds)
-				   //second parameter set to 5 seconds (5000 milliseconds) for testing purposes
-				   //to set the timer for 15 minutes use either 15*60*1000 OR 900000 for the second parameter
-	
-	}
-
+    BloodSugar bs1 = new BloodSugar();
 	
 	
 
+    @FXML
+    private LineChart<String, Number> LineChart;
+    //XYChart.Series<?, ?> series;
+    
+    @FXML   
+    Label lbl;		//Mouse
 
-// Test code for testing insulin reservoir, creating alert box, rng # generator, and refill box 
-	
-	
- public void generateInsulin(ActionEvent event) {
-	
-	Random rand2 = new Random();
-	int insulinLevel = rand2.nextInt(131)+ 50;
-	myNum1.setText(Integer.toString(insulinLevel));
-	
-	
-	//Animation for low blood sugar
-    TranslateTransition openNav2=new TranslateTransition(new Duration(350), navList2);
-    openNav2.setToY(0);
-    TranslateTransition closeNav2=new TranslateTransition(new Duration(350), navList2);
-	
-    if(insulinLevel  <= 100) {
-		navList2.getTranslateY();
-        openNav2.play();
-        } else {
-            closeNav2.setToY(-(navList2.getHeight()));
-            closeNav2.play();
-        }
-	//End of animation
+    @FXML
+    private CategoryAxis x;
 
-	exitButton2.setOnAction(new EventHandler<ActionEvent>() {
-	    @Override public void handle(ActionEvent e) {
-	    	closeNav2.setToY(-(navList2.getHeight()));
-            closeNav2.play();
-	    }
-	});
-	
-	insulinReservoir.setOnAction(new EventHandler<ActionEvent>() {
-	    @Override public void handle(ActionEvent e) {
-	    	
-	    	myNum1.setText(Integer.toString(insulinLevel + 50));
-	    	closeNav2.setToY(-(navList2.getHeight()));
-            closeNav2.play();
-	    }
-	});	
-	
-}
-	
+    @FXML
+    private NumberAxis y;
+    
+    
+    /*
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+    	series = new XYChart.Series<>();    	
+    	series.setName("Core 0");
+    	
+    	
+    	Thread th = new Thread(new SugarLevelReader());
+    	th.start();
+    }
+    
+    
+    class SugarLevelReader implements Runnable { //using https://www.youtube.com/watch?v=tqBlpH_3AgM&t=99s
+    	@Override
+    	public void run(){
+    		try {
+    			while (true) {
+    				int ctr = 1;
+    				
+    				Pattern p = Pattern.compile("[+]...");
+    	    		
+    	    		Process proc = Runtime.getRuntime().exec("url");
+    	    		BufferedReader reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+    	    		
+    	    		String line = "";
+    	    		int coreNumber = 0;
+    	    		
+    	    		while ((line = reader.readLine()) != null) {
+    	    			Matcher m = p.matcher(line);
+    	    			if(m.find())
+    	    			{
+    	    				System.out.println("Match Found = " + m.group().substring(1));
+    	    				Double temp = Double.parseDouble(m.group().substring(1));
+    	    				switch (coreNumber) {
+    	    				case 0: series.getData().add(new XYChart.Data<>(ctr, temp));
+    	    				break;  	    				
+    	    				
+    	    				}
+    	    				
+    	    			}
+    	    		}
+    	    		ctr++;
+    	    		System.out.println("------------------------------");
+    	    		Thread.sleep(2000); //loading the data in miliseconds
+    	    	}
+    		}
+    			catch (Exception ex) {
+    				Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
+    				}
+    		}
+    	}
+    */
+
+    
+    @SuppressWarnings("unchecked")
+	@Override
+    public void initialize(URL url, ResourceBundle rb) {
+    	XYChart.Series<String, Number> series = new XYChart.Series<String, Number>();
+    	try {
+			series.getData().add(new XYChart.Data<String, Number>("5", bs1.getlastBSfromDB()));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	try {
+			series.getData().add(new XYChart.Data<String, Number>("8", bs1.get2ndlastBSfromDB()));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	try {
+			series.getData().add(new XYChart.Data<String, Number>("11", bs1.get3rdlastBSfromDB()));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	try {
+			series.getData().add(new XYChart.Data<String, Number>("14", bs1.get4thlastBSfromDB()));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    	LineChart.getData().addAll(series);
+    	
+    	
+    	EventHandler<MouseEvent> mouseSensor = 
+    	        (MouseEvent event) -> {
+    	            ((Node)(event.getSource())).setCursor(Cursor.HAND);
+    	};
+    	series.getNode().setOnMouseEntered(mouseSensor);
+        series.getNode().setOnMouseExited(mouseSensor);
+        //series.getData().setOnMouseEntered(mouseSensor);
+        //series.getData().setOnMouseExited(mouseSensor);
+    	
+    	for(final XYChart.Data<String, Number> data : series.getData()) {  //mouse event
+    		data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+
+				@Override
+				public void handle(MouseEvent arg0) {
+					lbl.setText("Blood Sugar Level was checked at: " + data.getXValue() + "\nBlood Sugar Level: " + String.valueOf(data.getYValue()));
+					Tooltip.install(data.getNode(), new Tooltip("Blood Sugar Level was checked at: " + data.getXValue() + "\nBlood Sugar Level: " + String.valueOf(data.getYValue())));
+				}
+    			
+    		});
+    	}
+    	
+    
+    }
 }
