@@ -36,7 +36,7 @@ public class MainController {
     private Button exitButton;
     @FXML
     private Button consumeSugar;
-	@FXML
+    @FXML
     private Label myNum1;
     @FXML
     private AnchorPane navList2;
@@ -60,7 +60,7 @@ public class MainController {
     private BloodSugar bs1;
 
 
-@FXML private Label myNum;
+    @FXML private Label myNum;
 
 
 XYChart.Series<String, Number> series = new XYChart.Series<String, Number>();
