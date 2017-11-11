@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="773.0" prefWidth="1215.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GraphController">
+   <children>
+      <LineChart fx:id="newChart" prefHeight="653.0" prefWidth="1215.0" title="Chart">
+        <xAxis>
+          <NumberAxis autoRanging="false" forceZeroInRange="false" label="Hour" side="BOTTOM" tickUnit="4.0" upperBound="24.0" fx:id="xAxis" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="yAxis" forceZeroInRange="false" label="Blood Sugar" lowerBound="60.0" side="LEFT" tickLength="6.0" upperBound="170.0" />
+        </yAxis>
+      </LineChart>
+      <Button fx:id="newBtn" layoutX="800.0" layoutY="653.0" mnemonicParsing="false" onAction="#initChart" prefHeight="25.0" prefWidth="85.0" text="Start" />
+      <Label alignment="CENTER" layoutX="67.0" layoutY="629.0" prefHeight="130.0" prefWidth="482.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
