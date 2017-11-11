@@ -149,7 +149,7 @@ public void generateRandom(ActionEvent event) {
 							});
  }
 				});
-			}},5000,5000); //,first parameter is the delay before the FIRST measurement is taken (milliseconds)
+			}},1000,5000); //,first parameter is the delay before the FIRST measurement is taken (milliseconds)
 				   //second parameter is how long before the next measurement is taken (milliseconds)
 				   //second parameter set to 5 seconds (5000 milliseconds) for testing purposes
 				   //to set the timer for 15 minutes use either 15*60*1000 OR 900000 for the second parameter
