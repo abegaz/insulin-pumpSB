@@ -1,1 +1,46 @@
-/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+.chart {
+    -fx-padding: 10px;
+    -fx-background-color: #1E2C35;
+    -fx-legend-visible: false;
+}
+
+.chart-content {
+    -fx-padding: 30px;    
+}
+
+.chart-title {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 1.6em;
+}
+
+.axis-label {
+    -fx-text-fill: #ffffff;
+}
+
+.chart-plot-background {
+    -fx-background-color:transparent;
+}
+
+.chart-vertical-grid-lines {
+    -fx-stroke:#505050;
+}
+
+.chart-horizontal-grid-lines {
+    -fx-stroke: #505050;
+}
+
+.chart-alternative-row-fill {
+    -fx-fill:transparent;
+    -fx-stroke: transparent;
+}
+
+.default-color0.chart-series-line {
+    -fx-stroke: #DE9457;
+}
+
+.default-color0.chart-line-symbol {
+    -fx-background-color: #0000ff, white;
+}
+.chart-legend {
+    -fx-padding: 30px;    
+}
