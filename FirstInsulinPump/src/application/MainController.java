@@ -106,8 +106,8 @@ public void generateRandom(ActionEvent event) {
 						    Date dNow = new Date( );
 						    SimpleDateFormat ft = 
 						    new SimpleDateFormat ("hh:mm:ss a");
-							series.getData().add(new LineChart.Data<String,Number>(ft.format(dNow), bs1.getBs()));
-							
+							//series.getData().add(new LineChart.Data<String,Number>(ft.format(dNow), bs1.getBs()));
+							//^^^^^^Problem with this line of code^^^^^^
 							
 
 							
