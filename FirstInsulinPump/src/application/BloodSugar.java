@@ -17,7 +17,7 @@ public class BloodSugar {
 	private int secondlastBS;
 	private int thirdlastBS;
 	private int fourthlastBS;
-    private int bs; // bs= BloodSugar
+    private static int bs; // bs= BloodSugar
   
   public BloodSugar() {
 	  
@@ -33,6 +33,10 @@ public class BloodSugar {
 
   public int getBs() {
 	return bs;
+  }
+  
+  public static void setBs(int n){
+	  bs = n;
   }
   
   
@@ -208,4 +212,3 @@ public int get4thlastBS() {
 	return fourthlastBS;
 	}
 }
-
