@@ -1,6 +1,6 @@
 .chart {
     -fx-padding: 10px;
-    -fx-background-color: #1E2C35;
+    -fx-background-color: transparent;
     -fx-legend-visible: false;
 }
 
@@ -12,6 +12,7 @@
     -fx-text-fill: #ffffff;
     -fx-font-size: 1.6em;
 }
+
 
 .axis-label {
     -fx-text-fill: #ffffff;
@@ -26,7 +27,9 @@
 }
 
 .chart-horizontal-grid-lines {
-    -fx-stroke: #505050;
+	
+    -fx-stroke: #1E2C35;
+    -fx-stroke-width: 0.23em;   
 }
 
 .chart-alternative-row-fill {
@@ -39,7 +42,7 @@
 }
 
 .default-color0.chart-line-symbol {
-    -fx-background-color: #0000ff, white;
+    -fx-background-color: #C48959, white;
 }
 .chart-legend {
     -fx-padding: 30px;    
