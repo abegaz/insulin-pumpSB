@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class BloodSugar {
-	String url = "jdbc:mysql://localhost:3306/demo";
+	String url = "jdbc:mysql://localhost:3306/insulinpump_sb";
 	String user = "root";
 	String password = "";
 	Connection myConn = null;
