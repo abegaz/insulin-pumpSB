@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #1E2C35;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainApp.Controller">
+<AnchorPane minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #1E2C35;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainApp.Controller">
    <children>
       <Label alignment="CENTER" layoutX="762.0" layoutY="156.0" prefHeight="41.0" prefWidth="196.0" text="Last Blood Sugar Reading" textFill="WHITE">
          <font>
@@ -44,6 +44,8 @@
       <Region layoutX="107.0" layoutY="396.0" opacity="0.4" prefHeight="232.0" prefWidth="842.0" style="-fx-background-color: green;" AnchorPane.bottomAnchor="246.0" AnchorPane.leftAnchor="107.0" AnchorPane.rightAnchor="51.0" AnchorPane.topAnchor="396.0" />
       <Region layoutX="107.0" layoutY="213.0" opacity="0.45" prefHeight="257.0" prefWidth="842.0" style="-fx-background-color: yellow;" AnchorPane.bottomAnchor="404.0" AnchorPane.leftAnchor="107.0" AnchorPane.rightAnchor="51.0" AnchorPane.topAnchor="213.0" />
       <Region layoutX="107.0" layoutY="554.0" opacity="0.45" prefHeight="77.0" prefWidth="842.0" style="-fx-background-color: red;" AnchorPane.bottomAnchor="169.0" AnchorPane.leftAnchor="107.0" AnchorPane.rightAnchor="51.0" AnchorPane.topAnchor="554.0" />
+      <Line endX="2.0" layoutX="933.0" layoutY="133.0" startX="-15.0" stroke="#d67a42" AnchorPane.bottomAnchor="669.5" AnchorPane.leftAnchor="917.5" AnchorPane.rightAnchor="64.5" AnchorPane.topAnchor="132.5" />
+      <Label layoutX="921.0" layoutY="133.0" prefHeight="19.0" prefWidth="21.0" text="dL" textFill="#d67a42" />
       <LineChart fx:id="LineChart" layoutX="10.0" layoutY="173.0" prefHeight="534.0" prefWidth="978.0" AnchorPane.bottomAnchor="95.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="173.0">
         <xAxis>
           <CategoryAxis label="Time" prefHeight="34.0" prefWidth="898.0" side="BOTTOM" fx:id="x" />
@@ -133,8 +135,6 @@
                </font>
             </Button>
          </children>
-      </AnchorPane>
-      <Line endX="2.0" layoutX="933.0" layoutY="133.0" startX="-15.0" stroke="#d67a42" AnchorPane.bottomAnchor="669.5" AnchorPane.leftAnchor="917.5" AnchorPane.rightAnchor="64.5" AnchorPane.topAnchor="132.5" />
-      <Label layoutX="921.0" layoutY="133.0" prefHeight="19.0" prefWidth="21.0" text="dL" textFill="#d67a42" />        
+      </AnchorPane>        
    </children>
 </AnchorPane>
