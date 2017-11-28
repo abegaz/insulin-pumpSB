@@ -103,7 +103,7 @@ XYChart.Series<String, Number> series = new XYChart.Series<String, Number>();
 	private Button buttonAction1; 
 	//List of stabilizers and spikes
 	ObservableList<String> Stabilizer = FXCollections.observableArrayList(
-			"","Cake","Coke","Donut","Burger"
+			"","Cake","Cookie","Donut","Burger"
 			);
 	ObservableList<String> Spike = FXCollections.observableArrayList(
 			"","Test1","Test2","Test3","Test4"
@@ -272,7 +272,7 @@ public void generateRandom(ActionEvent event) {
                                         closeNav.setToY(-(navList.getHeight()));
                                         closeNav.play();
                                     }
-                                    else if(combobox.getValue() == "Coke") {
+                                    else if(combobox.getValue() == "Cookie") {
                                     	myNum.setText(Integer.toString(bs1.intakeSugar()));
                                         closeNav.setToY(-(navList.getHeight()));
                                         closeNav.play();
