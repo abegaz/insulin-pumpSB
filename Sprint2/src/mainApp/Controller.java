@@ -281,6 +281,9 @@ public void generateRandom(ActionEvent event) {
                                     	myNum.setText(Integer.toString(bs1.intakeSugar()));
                                         closeNav.setToY(-(navList.getHeight()));
                                         closeNav.play();
+                                    } else {
+                                    	closeNav.setToY(-(navList.getHeight()));
+                                        closeNav.play();
                                     }
                                 }
                             });
