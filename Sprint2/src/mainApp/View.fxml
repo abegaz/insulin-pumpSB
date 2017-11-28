@@ -178,11 +178,18 @@
    
       <AnchorPane fx:id="navList3" layoutX="-1.0" layoutY="3.0" prefHeight="800.0" prefWidth="1001.0" translateY="-800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0">
          <children>
-               <TableView layoutX="30.0" layoutY="25.0" prefHeight="759.0" prefWidth="940.0">
+<TableView layoutX="30.0" layoutY="25.0" prefHeight="379.5" prefWidth="940.0">
         <columns>
-          <TableColumn prefWidth="75.0" />
-          <TableColumn prefWidth="75.0" text="C2" />
+          <TableColumn prefWidth="75.0" text="Stableizers" />
+          <TableColumn prefWidth="846.0" text="Sugar" />
         </columns>
+        
+      </TableView>
+      <TableView layoutX="30.0" layoutY="380.0" prefHeight="330.0" prefWidth="940.0">
+         <columns>
+            <TableColumn prefWidth="75.0" text="Spikers" />
+            <TableColumn prefWidth="846.0" text="Sugar" />
+         </columns>
       </TableView>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="409.0" layoutY="26.0" prefHeight="79.0" prefWidth="185.0" text="John," textFill="WHITE">
                <font>
