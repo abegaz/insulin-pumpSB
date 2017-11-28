@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #1E2C35;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainApp.Controller">
+   <children>
+      <Label alignment="CENTER" layoutX="762.0" layoutY="156.0" prefHeight="41.0" prefWidth="196.0" text="Last Blood Sugar Reading" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <Button fx:id="clickMe" layoutX="289.0" layoutY="745.0" mnemonicParsing="false" onAction="#generateRandom" prefHeight="44.0" prefWidth="235.0" text="Start">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
+      <Label fx:id="myNum" alignment="CENTER" contentDisplay="CENTER" layoutX="806.0" layoutY="86.0" prefHeight="79.0" prefWidth="108.0" text="123" textAlignment="CENTER" textFill="#d67a42" AnchorPane.bottomAnchor="627.0" AnchorPane.leftAnchor="806.0" AnchorPane.rightAnchor="86.0" AnchorPane.topAnchor="86.0">
+         <font>
+            <Font name="System Bold" size="62.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Label>
+      <Label layoutX="917.0" layoutY="111.0" prefHeight="19.0" prefWidth="21.0" text="mg" textFill="#d67a42" AnchorPane.bottomAnchor="673.0" AnchorPane.leftAnchor="917.0" AnchorPane.rightAnchor="62.0" AnchorPane.topAnchor="111.0" />
+      <Line endX="2.0" layoutX="933.0" layoutY="133.0" startX="-15.0" stroke="#d67a42" AnchorPane.bottomAnchor="669.5" AnchorPane.leftAnchor="917.5" AnchorPane.rightAnchor="64.5" AnchorPane.topAnchor="132.5" />
+      <Label layoutX="921.0" layoutY="133.0" prefHeight="19.0" prefWidth="21.0" text="dL" textFill="#d67a42" />
+      <Label fx:id="myNum1" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="117.0" layoutY="703.0" prefHeight="21.0" prefWidth="131.0" textAlignment="CENTER" textFill="#60d836">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Label>
+      <Region layoutX="107.0" layoutY="396.0" opacity="0.4" prefHeight="232.0" prefWidth="842.0" style="-fx-background-color: green;" AnchorPane.bottomAnchor="246.0" AnchorPane.leftAnchor="107.0" AnchorPane.rightAnchor="51.0" AnchorPane.topAnchor="396.0" />
+      <Region layoutX="107.0" layoutY="213.0" opacity="0.45" prefHeight="257.0" prefWidth="842.0" style="-fx-background-color: yellow;" AnchorPane.bottomAnchor="404.0" AnchorPane.leftAnchor="107.0" AnchorPane.rightAnchor="51.0" AnchorPane.topAnchor="213.0" />
+      <Region layoutX="107.0" layoutY="554.0" opacity="0.45" prefHeight="77.0" prefWidth="842.0" style="-fx-background-color: red;" AnchorPane.bottomAnchor="169.0" AnchorPane.leftAnchor="107.0" AnchorPane.rightAnchor="51.0" AnchorPane.topAnchor="554.0" />
+      <ProgressBar fx:id="levels" layoutX="-5.0" layoutY="679.0" prefHeight="90.0" prefWidth="130.0" progress="0.0" rotate="-90.0" />
+      <Label alignment="CENTER" layoutX="129.0" layoutY="734.0" prefHeight="22.0" prefWidth="104.0" text="Reservoir Holds" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="myNum11" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="114.0" layoutY="762.0" prefHeight="21.0" prefWidth="131.0" text="100.0 Units" textAlignment="CENTER" textFill="#d67a42">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Label>
+      <Label fx:id="label" alignment="CENTER" layoutX="289.0" layoutY="672.0" prefHeight="51.0" prefWidth="248.0" textFill="WHITE" />
+      <LineChart fx:id="LineChart" layoutX="10.0" layoutY="173.0" prefHeight="534.0" prefWidth="978.0" AnchorPane.bottomAnchor="95.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="173.0">
+        <xAxis>
+          <CategoryAxis label="Time" prefHeight="34.0" prefWidth="898.0" side="BOTTOM" fx:id="x" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="y" animated="false" autoRanging="false" label="Blood Sugar Level" lowerBound="40.0" prefWidth="56.0" side="LEFT" tickLabelGap="10.0" tickLength="10.0" tickUnit="30.0" upperBound="200.0">
+               <tickLabelFont>
+                  <Font size="10.0" />
+               </tickLabelFont></NumberAxis>
+        </yAxis>
+      </LineChart>
+      <Label fx:id="lbl" layoutX="589.0" layoutY="729.0" prefHeight="61.0" prefWidth="360.0" style="-fx-border-color: lightgray; -fx-border-radius: 10px;" textFill="WHITE">
+               <font>
+            <Font size="17.0" />
+         </font>
+         <effect>
+            <Glow level="0.48" />
+         </effect>
+       </Label>
+      <Label prefHeight="90.0" prefWidth="1000.0" style="-fx-background-color: #1C2932;">
+         <effect>
+            <InnerShadow />
+         </effect>
+      </Label>
+      <Label alignment="CENTER" layoutX="130.0" layoutY="680.0" prefHeight="22.0" prefWidth="104.0" text="Insulin Levels" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <Label layoutX="37.0" layoutY="18.0" prefHeight="54.0" prefWidth="208.0" text="InsulinPump_SB" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font></Label>
+      <Label layoutX="256.0" layoutY="5.0" prefHeight="64.0" prefWidth="33.0" text="|" textFill="#2a353b">
+         <font>
+            <Font size="55.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="846.0" layoutY="1.0" prefHeight="90.0" prefWidth="154.0" style="-fx-background-color: black;" text="John Smith" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+            
+      <Button fx:id="foodButton" layoutX="769.0" layoutY="34.0" mnemonicParsing="false" text="">
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/food.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>  
+ <AnchorPane fx:id="navList2" layoutX="-1.0" prefHeight="245.0" prefWidth="1001.0" style="-fx-background-color: #FF3856;" translateX="1.0" translateY="-245.0" AnchorPane.bottomAnchor="555.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="409.0" layoutY="26.0" prefHeight="79.0" prefWidth="185.0" text="John," textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="339.0" layoutY="96.0" prefHeight="54.0" prefWidth="324.0" text="Your insulin reservoir is running low!" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="insulinReservoir" layoutX="431.0" layoutY="177.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="139.0" style="-fx-background-color: #4D8FBA; -fx-background-radius: 100em;" text="Refill Reservoir" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="exitButton2" layoutX="953.0" mnemonicParsing="false" style="-fx-background-color: #FF3856; -fx-background-radius: 100;" text="X" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            </children>
+ </AnchorPane>
+      <AnchorPane fx:id="navList" layoutX="-26.0" layoutY="401.0" prefHeight="245.0" prefWidth="1000.0" style="-fx-background-color: #FF3856;" translateY="-245.0" AnchorPane.bottomAnchor="555.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="409.0" layoutY="26.0" prefHeight="79.0" prefWidth="185.0" text="John," textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="287.0" layoutY="96.0" prefHeight="54.0" prefWidth="426.0" text="Your blood sugar is running low. It's time to eat!" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="exitButton" layoutX="953.0" mnemonicParsing="false" style="-fx-background-color: #FF3856; -fx-background-radius: 100;" text="X" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <ComboBox fx:id="combobox" layoutX="251.0" layoutY="191.0" prefWidth="150.0" promptText="Select One" />
+            <Button fx:id="buttonAction" layoutX="409.0" layoutY="191.0" mnemonicParsing="false" style="-fx-background-color: #4D8FBA; -fx-background-radius: 100em;" text="Select" textFill="WHITE" />
+            <ComboBox fx:id="combobox1" layoutX="529.0" layoutY="191.0" prefWidth="150.0" promptText="Select One" />
+            <Button fx:id="buttonAction1" layoutX="689.0" layoutY="191.0" mnemonicParsing="false" style="-fx-background-color: #4D8FBA; -fx-background-radius: 100em;" text="Select" textFill="WHITE" />
+            <Label layoutX="571.0" layoutY="163.0" prefHeight="28.0" prefWidth="67.0" text="Spike's" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="274.0" layoutY="163.0" prefHeight="28.0" prefWidth="104.0" text="Stabilizer's" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="19.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>        
+   
+      <AnchorPane fx:id="navList3" layoutX="-1.0" layoutY="3.0" prefHeight="800.0" prefWidth="1001.0" translateY="-800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0">
+         <children>
+               <TableView layoutX="30.0" layoutY="25.0" prefHeight="759.0" prefWidth="940.0">
+        <columns>
+          <TableColumn prefWidth="75.0" />
+          <TableColumn prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="409.0" layoutY="26.0" prefHeight="79.0" prefWidth="185.0" text="John," textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="287.0" layoutY="96.0" prefHeight="54.0" prefWidth="426.0" text="Your blood sugar is running low. It's time to eat!" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="exitButton3" layoutX="930.0" mnemonicParsing="false" style=" -fx-background-radius: 50;" text="X" textFill="BLACK">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>      
+   </children>
+</AnchorPane>
