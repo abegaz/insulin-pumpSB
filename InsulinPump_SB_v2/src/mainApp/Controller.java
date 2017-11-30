@@ -66,7 +66,7 @@ public class Controller implements Initializable {
     //XYChart.Series<?, ?> series;
     @FXML
     private ProgressBar levels;
-    @FXML   
+    @FXML
     Label lbl;      //Mouse
 
     @FXML
@@ -89,24 +89,24 @@ XYChart.Series<String, Number> series = new XYChart.Series<String, Number>();
 
 	@FXML // Stabilizer dropdown
 	private ComboBox<String> combobox;
-    
+
 	@FXML // Spike dropdown
 	private ComboBox<String> combobox1;
-	
+
 	@FXML
 	private Label label;
 
-	@FXML 
+	@FXML
 	private Button buttonAction;
 	@FXML
 	private Button buttonAction1;
-	
-	
-	 
-	
+
+
+
+
 	//List of possible stabilizer foods
 	ObservableList<String> Stabilizer = FXCollections.observableArrayList(
-			"","Bread","Black Berries","Almonds","Avocado"
+			"","Bread","Black Berries","Cooked oatmeal","Small baked potato"
 			);
 	//List of possible spiker foods
 	ObservableList<String> Spike = FXCollections.observableArrayList(
@@ -118,22 +118,22 @@ XYChart.Series<String, Number> series = new XYChart.Series<String, Number>();
 	combobox1.setItems(Spike);
 }
 
-  
+
 
 
 
 @SuppressWarnings("unchecked")
 public void generateRandom(ActionEvent event) {
-    
+
     LineChart.getData().addAll(series);
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask(){
             public void run(){
                 Platform.runLater(new Runnable(){ //What allows the UI to be modified
-                    
-                    
+
+
                     public void run(){
-                        
+
                             if(insulinFlag){
                                 bs1.injectInsulin();
                                 insulinFlag=false;
@@ -142,25 +142,25 @@ public void generateRandom(ActionEvent event) {
                                 bs1.getBS(true);
                             	bs1.uploadBSToDB();
                             	myNum.setText(Integer.toString(bs1.getBS(false)));
-                            
-                            
-                            
+
+
+
                             // This is the transition for the low sugar alert
                             TranslateTransition openNav=new TranslateTransition(new Duration(350), navList);
                             openNav.setToY(0);
                             TranslateTransition closeNav=new TranslateTransition(new Duration(350), navList);
-                            
+
                             // This is the transition for the insulin alert
                             TranslateTransition openNav2=new TranslateTransition(new Duration(350), navList2);
                             openNav2.setToY(0);
                             TranslateTransition closeNav2=new TranslateTransition(new Duration(350), navList2);
-                            
-                            
+
+
                             // This is the transition for the food menu
                             TranslateTransition openNav3=new TranslateTransition(new Duration(350), navList3);
                             openNav3.setToY(0);
                             TranslateTransition closeNav3=new TranslateTransition(new Duration(350), navList3);
-                                
+
                             levels.setProgress(insulinLevel/100.0);
                             if(bs1.getBS(false)  <= 70) {
                                 navList.getTranslateY();
@@ -169,15 +169,15 @@ public void generateRandom(ActionEvent event) {
                                     closeNav.setToY(-(navList.getHeight()));
                                     closeNav.play();
                                 }
-                            
-                            
+
+
                             Date dNow = new Date( );
-                            SimpleDateFormat ft = 
+                            SimpleDateFormat ft =
                             new SimpleDateFormat ("hh:mm:ss a");
                             //series.getData().add(new LineChart.Data<String,Number>(ft.format(dNow), bs1.getBs()));
- 
+
                             //-------code for hover and bs display-------//
-                            EventHandler<MouseEvent> mouseSensor = 
+                            EventHandler<MouseEvent> mouseSensor =
                                     (MouseEvent e) -> {
                                         ((Node)(e.getSource())).setCursor(Cursor.HAND);
                             };
@@ -194,50 +194,51 @@ public void generateRandom(ActionEvent event) {
                                         lbl.setText("Blood Sugar Level was checked at: " + data.getXValue() + "\nBlood Sugar Level: " + String.valueOf(data.getYValue()));
                                         Tooltip.install(data.getNode(), new Tooltip("Blood Sugar Level was checked at: " + data.getXValue() + "\nBlood Sugar Level: " + String.valueOf(data.getYValue())));
                                     }
-                                    
+
                                 });
-                            }     
+                            }
                             //-------end code for hover and bs display-------//
-                            
+
                             //-------code for red points-------//
                             myNum1.setText(Double.toString(insulinLevel));
-                            if(bs1.getBS(false) >= 130 && bs1.getBS(false)<180){
+                            if(bs1.getBS(false) >= 130){
                                 series.getData().add(new LineChart.Data<String,Number>(ft.format(dNow), bs1.getBS(false)));
                                 XYChart.Data<String, Number> dataPoint = series.getData().get(index);
                                 Node lineSymbol = dataPoint.getNode().lookup(".chart-line-symbol");
-                                lineSymbol.setStyle("-fx-background-color: #ff0000, #ffffff; -fx-background-insets: 0, 2;\n" + 
+                                lineSymbol.setStyle("-fx-background-color: #ff0000, #ffffff; -fx-background-insets: 0, 2;\n" +
                                            "    -fx-background-radius: 3px;\n" +
                                            "    -fx-padding: 4px;");
                                 insulinFlag = true;
-                                unitsInj = 10;
+                                unitsInj = bs1.injectInsulin()[1];
                                 insulinLevel = insulinLevel - unitsInj;
                                 myNum.setText(Integer.toString(bs1.getBS(false)));
                                 myNum1.setText((Double.toString(insulinLevel))+ " Units");
                                 Tooltip.install(dataPoint.getNode(), new Tooltip(unitsInj + " Units of insulin injected at " + ft.format(dNow)));
                                 dataPoint.getNode().setOnMouseEntered(event -> dataPoint.getNode().getStyleClass().add("onHover"));
                                 dataPoint.getNode().setOnMouseExited(event -> dataPoint.getNode().getStyleClass().remove("onHover"));
-                                
-                                
-                                
+
+
+
                             }
-                            else if(bs1.getBS(false) >= 180){
-                                series.getData().add(new LineChart.Data<String,Number>(ft.format(dNow), bs1.getBS(false)));
-                                XYChart.Data<String, Number> dataPoint = series.getData().get(index);
-                                Node lineSymbol = dataPoint.getNode().lookup(".chart-line-symbol");
-                                lineSymbol.setStyle("-fx-background-color: #ff0000, #ffffff; -fx-background-insets: 0, 2;\n" + 
-                                           "    -fx-background-radius: 3px;\n" +
-                                           "    -fx-padding: 4px;");
-            
-                                unitsInj = 20;
-                                insulinLevel = insulinLevel - unitsInj;
-                                myNum.setText(Integer.toString(bs1.injectInsulin()));
-                                insulinFlag = true;
-                                myNum1.setText((Double.toString(insulinLevel))+ " Units");
-                                Tooltip.install(dataPoint.getNode(), new Tooltip(unitsInj + " Units of insulin injected at " + ft.format(dNow)));
-                                dataPoint.getNode().setOnMouseEntered(event -> dataPoint.getNode().getStyleClass().add("onHover"));
-                                dataPoint.getNode().setOnMouseExited(event -> dataPoint.getNode().getStyleClass().remove("onHover"));
-                            }
-                            
+//                            else if(bs1.getBS(false) >= 180){
+//                                series.getData().add(new LineChart.Data<String,Number>(ft.format(dNow), bs1.getBS(false)));
+//                                XYChart.Data<String, Number> dataPoint = series.getData().get(index);
+//                                Node lineSymbol = dataPoint.getNode().lookup(".chart-line-symbol");
+//                                lineSymbol.setStyle("-fx-background-color: #ff0000, #ffffff; -fx-background-insets: 0, 2;\n" +
+//                                           "    -fx-background-radius: 3px;\n" +
+//                                           "    -fx-padding: 4px;");
+//
+//                                int[] insVals = bs1.injectInsulin(); //first entry is bs level after injection, second entry is units injected
+//                                myNum.setText(Integer.toString(insVals[0]));
+//                                unitsInj = insVals[1];
+//                                insulinLevel = insulinLevel - unitsInj;
+//                                insulinFlag = true;
+//                                myNum1.setText((Double.toString(insulinLevel))+ " Units");
+//                                Tooltip.install(dataPoint.getNode(), new Tooltip(unitsInj + " Units of insulin injected at " + ft.format(dNow)));
+//                                dataPoint.getNode().setOnMouseEntered(event -> dataPoint.getNode().getStyleClass().add("onHover"));
+//                                dataPoint.getNode().setOnMouseExited(event -> dataPoint.getNode().getStyleClass().remove("onHover"));
+//                            }
+
                             else{
                                 series.getData().add(new LineChart.Data<String,Number>(ft.format(dNow), bs1.getBS(false)));
                             }
@@ -245,17 +246,17 @@ public void generateRandom(ActionEvent event) {
                             //-------end code for red points-------//
                             myNum1.setText((Double.toString(insulinLevel))+ " Units");
                             if(insulinLevel  <= 60) {
-                            	
+
                                 navList2.getTranslateY();
                                 openNav2.play();
                                 } else {
                                     closeNav2.setToY(-(navList2.getHeight()));
                                     closeNav2.play();
-                                }   
-                            
+                                }
+
                             insulinReservoir.setOnAction(new EventHandler<ActionEvent>() {
                                 @Override public void handle(ActionEvent e) {
-                                	
+
                                     insulinLevel=100;
                                     myNum1.setText((Double.toString(insulinLevel))+ " Units");
                                     closeNav2.setToY(-(navList2.getHeight()));
@@ -266,7 +267,7 @@ public void generateRandom(ActionEvent event) {
                             buttonAction.setOnAction(new EventHandler<ActionEvent>() {
                                 @Override public void handle(ActionEvent e) {
                                 	label.setText(combobox.getValue());
-                                	
+
                                 	// when donut is chosen it's equivalent to choosing consumeSugar button
                                     // can use an algorithm for the statement
                                     if(combobox.getValue() == "Bread") {
@@ -279,28 +280,28 @@ public void generateRandom(ActionEvent event) {
                                         closeNav.setToY(-(navList.getHeight()));
                                         closeNav.play();
                                     }
-                                    else if(combobox.getValue() == "Almonds") {
+                                    else if(combobox.getValue() == "Cooked oatmeal") {
                                     	myNum.setText(Integer.toString(bs1.intakeStabl()));
                                         closeNav.setToY(-(navList.getHeight()));
                                         closeNav.play();
                                     }
-                                    else if(combobox.getValue() == "Avocado") {
+                                    else if(combobox.getValue() == "Small baked potato") {
                                     	myNum.setText(Integer.toString(bs1.intakeStabl()));
                                         closeNav.setToY(-(navList.getHeight()));
                                         closeNav.play();
-                                    } 
-                                   
+                                    }
+
                                     else {
                                     	closeNav.setToY(-(navList.getHeight()));
                                         closeNav.play();
                                     }
                                 }
                             });
-                            
+
                             buttonAction1.setOnAction(new EventHandler<ActionEvent>() {
                                 @Override public void handle(ActionEvent e) {
                                 	label.setText(combobox1.getValue());
-                                	
+
                                 	if(combobox1.getValue() == "Banana"){
                                 		myNum.setText(Integer.toString(bs1.intakeSpike()));
                                 		closeNav.setToY(-(navList.getHeight()));
@@ -327,17 +328,17 @@ public void generateRandom(ActionEvent event) {
                                 	}
                                 }
                             });
-                              
+
                             foodButton.setOnAction(new EventHandler<ActionEvent>() {
                                 @Override public void handle(ActionEvent e) {
                                     navList3.getTranslateY();
                                     openNav3.play();
                                 }
                             });
-                                                
+
                            /* consumeSugar.setOnAction(new EventHandler<ActionEvent>() {
                                 @Override public void handle(ActionEvent e) {
-                                    
+
                                     myNum.setText(Integer.toString(bs1.intakeSugar()));
                                     closeNav.setToY(-(navList.getHeight()));
                                     closeNav.play();
@@ -349,8 +350,8 @@ public void generateRandom(ActionEvent event) {
                                     closeNav.play();
                                 }
                             });
-                            
-                                
+
+
                              //End of animation
                             exitButton2.setOnAction(new EventHandler<ActionEvent>() {
                                  @Override public void handle(ActionEvent e) {
@@ -364,19 +365,19 @@ public void generateRandom(ActionEvent event) {
                                     closeNav3.play();
                                 }
                             });
-                            
+
                             // updates the progressbar(insulin level bar)
                             levels.setProgress(insulinLevel/100.0);
-                            
-                            
-                            
-                            
+
+
+
+
                             // resets the combobox so that next time it appears it says "Select One"
                             // instead of the last item chosen
-                            combobox.setValue(null);    
+                            combobox.setValue(null);
                             combobox1.setValue(null);
  }
-                    
+
                 });
             }},1000,12000); //,first parameter is the delay before the FIRST measurement is taken (milliseconds)
                    //second parameter is how long before the next measurement is taken (milliseconds)
